@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Northgate Motor Co.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="top">
+  <div class="wrap">
+    <nav class="nav" aria-label="Main">
+      <a class="brand" href="#">Northgate <span>Motor Co.</span></a>
+      <ul>
+        <li><a href="#inventory">Inventory</a></li>
+        <li><a href="#finance">Financing</a></li>
+        <li><a href="#trade">Trade-in</a></li>
+        <li><a href="#visit">Visit</a></li>
+      </ul>
+    </nav>
+    <section class="hero">
+      <div>
+        <span class="label">Pre-owned · Inspected · Priced to the dollar</span>
+        <h1>Read the sticker. <em>Drive it home.</em></h1>
+        <p>Every car on our lot carries the same sticker: mileage, fuel economy, inspection result and one price. No add-ons at the desk.</p>
+      </div>
+      <div class="lotboard" aria-label="Lot at a glance">
+        <div><span class="label">On the lot</span><b id="statCount">0</b></div>
+        <div><span class="label">From</span><b id="statFrom">$0</b></div>
+        <div><span class="label">Inspection</span><b>152</b></div>
+        <p class="note">Each vehicle passes a 152-point inspection and comes with a 90-day / 3,000-mile powertrain warranty.</p>
+      </div>
+    </section>
+  </div>
+</div>
+
+<main>
+  <section id="inventory" class="wrap">
+    <div class="filters">
+      <h2>On the lot</h2>
+      <div class="field">
+        <span class="label">Body style</span>
+        <div class="chips" id="bodyChips" role="group" aria-label="Body style"></div>
+      </div>
+      <div class="field">
+        <label class="label" for="maxPrice">Max price</label>
+        <select id="maxPrice">
+          <option value="0">Any price</option>
+          <option value="20000">Under $20,000</option>
+          <option value="30000">Under $30,000</option>
+          <option value="40000">Under $40,000</option>
+        </select>
+      </div>
+      <div class="field">
+        <label class="label" for="sort">Sort</label>
+        <select id="sort">
+          <option value="price-asc">Price: low to high</option>
+          <option value="price-desc">Price: high to low</option>
+          <option value="miles-asc">Mileage: lowest</option>
+          <option value="year-desc">Year: newest</option>
+        </select>
+      </div>
+    </div>
+    <div class="count" id="count" aria-live="polite"></div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <div class="band" id="finance">
+    <section class="wrap finance">
+      <div>
+        <span class="label">Financing</span>
+        <h2>Know the payment before you sit down</h2>
+        <p>Pick any car on the lot or enter your own numbers. Rates shown are examples based on a 720+ credit score. We work with 14 lenders and local credit unions, and you're welcome to bring your own pre-approval.</p>
+        <p class="label">Estimate excludes tax, title and registration.</p>
+      </div>
+      <form class="calc" id="calc" aria-label="Payment estimator">
+        <div class="field"><label class="label" for="cPrice">Vehicle price ($)</label><input id="cPrice" type="number" min="0" step="100" value="26450"></div>
+        <div class="field"><label class="label" for="cDown">Down payment ($)</label><input id="cDown" type="number" min="0" step="100" value="4000"></div>
+        <div class="field"><label class="label" for="cApr">APR (%)</label><input id="cApr" type="number" min="0" max="30" step="0.1" value="6.9"></div>
+        <div class="field"><label class="label" for="cTerm">Term</label>
+          <select id="cTerm"><option value="36">36 months</option><option value="48">48 months</option><option value="60" selected>60 months</option><option value="72">72 months</option></select>
+        </div>
+        <div class="out" aria-live="polite">
+          <span class="label">Estimated monthly payment</span>
+          <b id="cOut">$0</b>
+          <small id="cDetail"></small>
+        </div>
+      </form>
+    </section>
+  </div>
+
+  <section class="wrap process">
+    <span class="label">How buying works here</span>
+    <h2>Four steps, about two hours</h2>
+    <ol class="steps">
+      <li><span class="n">Step 1</span><h3>Test drive</h3><p>Book online or walk in. Take it on the highway and bring your own mechanic if you like.</p></li>
+      <li><span class="n">Step 2</span><h3>Appraisal</h3><p>We value your trade-in in 20 minutes. The offer is good for 7 days whether you buy or not.</p></li>
+      <li><span class="n">Step 3</span><h3>Financing</h3><p>We send one application to our lenders and show you every offer side by side.</p></li>
+      <li><span class="n">Step 4</span><h3>Paperwork</h3><p>Sign, get temporary plates and leave with a full tank. We file title and registration for you.</p></li>
+    </ol>
+  </section>
+
+  <div class="band" id="trade">
+    <section class="wrap trade">
+      <div>
+        <span class="label">Trade-in</span>
+        <h2>Get a number on your current car</h2>
+        <p>Tell us what you drive. An appraiser replies within one business day with a written range, and we confirm the final offer at the lot.</p>
+      </div>
+      <form id="tradeForm">
+        <div class="field"><label class="label" for="tYear">Year</label><input id="tYear" type="number" min="1990" max="2027" placeholder="2018" required></div>
+        <div class="field"><label class="label" for="tMiles">Odometer (mi)</label><input id="tMiles" type="number" min="0" placeholder="64,000" required></div>
+        <div class="field full"><label class="label" for="tModel">Make and model</label><input id="tModel" type="text" placeholder="Honda CR-V EX" required></div>
+        <div class="field full"><label class="label" for="tEmail">Email</label><input id="tEmail" type="email" placeholder="you@example.com" required></div>
+        <div class="full"><button class="btn" type="submit">Request appraisal</button></div>
+        <p class="toast" id="tradeToast" hidden></p>
+      </form>
+    </section>
+  </div>
+</main>
+
+<footer class="foot" id="visit">
+  <div class="wrap">
+    <div>
+      <a class="brand" href="#">Northgate <span>Motor Co.</span></a>
+      <p>4180 Northgate Parkway<br>Building C, open lot on the east side<br>(555) 014-2290</p>
+    </div>
+    <div>
+      <h3>Sales hours</h3>
+      <table>
+        <tr><td>Mon–Fri</td><td>9:00–19:00</td></tr>
+        <tr><td>Saturday</td><td>9:00–18:00</td></tr>
+        <tr><td>Sunday</td><td>11:00–16:00</td></tr>
+      </table>
+    </div>
+    <div>
+      <h3>Service hours</h3>
+      <table>
+        <tr><td>Mon–Fri</td><td>7:30–17:30</td></tr>
+        <tr><td>Saturday</td><td>8:00–13:00</td></tr>
+        <tr><td>Sunday</td><td>Closed</td></tr>
+      </table>
+    </div>
+    <p class="fine">Northgate Motor Co. is a fictional dealership; vehicles, prices and VINs are sample data. Fuel economy figures are EPA-style city/highway estimates.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
