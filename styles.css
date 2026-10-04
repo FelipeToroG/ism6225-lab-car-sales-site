@@ -80,18 +80,18 @@ select, input[type="number"], input[type="text"], input[type="email"] {
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 22px; padding-block: 12px 56px; }
 .sticker { background: var(--paper); border: 1px solid var(--rule); display: grid; grid-template-rows: auto auto 1fr auto; }
 .sticker header { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; padding: 10px 16px; border-bottom: 2px solid var(--ink); }
-.art { padding: 18px 16px 6px; display: grid; place-items: center; }
-.art svg { width: 100%; max-width: 260px; height: auto; }
-.art .body { fill: var(--body-fill); } .art .glass { fill: var(--glass); } .art .tire { fill: var(--tire); } .art .hub { fill: var(--rule); }
-.art .shadow { fill: var(--rule); }
+.photo { margin: 0; border-bottom: 1px solid var(--rule); }
+.photo img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; background: var(--ground); }
+.photo figcaption { padding: 4px 16px; font-size: 11px; color: var(--muted); }
+.photo figcaption a { color: inherit; }
 .info { padding: 6px 16px 14px; display: grid; gap: 12px; align-content: start; }
 .info h3 { font-size: 30px; font-weight: 800; text-transform: uppercase; }
 .info .trim { color: var(--muted); font-size: 14px; margin-top: 2px; }
 .specs { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--rule); }
 .specs > div { padding: 8px 10px; display: grid; gap: 2px; }
 .specs > div:nth-child(odd) { border-right: 1px solid var(--rule); }
-.specs > div:nth-child(-n+2) { border-bottom: 1px solid var(--rule); }
-.specs b { font-family: var(--f-mono); font-weight: 600; font-size: 15px; font-variant-numeric: tabular-nums; }
+.specs > div:not(:nth-last-child(-n+2)) { border-bottom: 1px solid var(--rule); }
+.specs b { font-family: var(--f-mono); font-weight: 600; font-size: 14px; font-variant-numeric: tabular-nums; }
 .odo { display: inline-flex; gap: 2px; }
 .odo i { font-style: normal; background: var(--ink); color: var(--paper); padding: 0 3px; border-radius: 2px; }
 .badge { justify-self: start; font: 600 12px var(--f-body); color: var(--good); border: 1px solid currentColor; padding: 2px 8px; border-radius: 3px; }
@@ -133,6 +133,7 @@ select, input[type="number"], input[type="text"], input[type="email"] {
 .foot h3 { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--hero-ink); margin-bottom: 10px; line-height: 1.4; }
 .foot table { border-collapse: collapse; font-variant-numeric: tabular-nums; }
 .foot td { padding: 2px 16px 2px 0; }
+.foot .fine a { color: inherit; }
 .foot .fine { grid-column: 1 / -1; border-top: 1px solid #333c47; padding-top: 16px; font-size: 13px; }
 
 @media (max-width: 860px) {
